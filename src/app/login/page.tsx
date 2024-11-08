@@ -5,14 +5,17 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [password, setPassword] = useState('')
+  const router=useRouter()
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Login Data:', { phoneNumber, password })
+    router.push(`/transport-selection/${phoneNumber}`)
   }
 
   return (

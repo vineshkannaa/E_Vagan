@@ -59,7 +59,7 @@ export default function TransportReceipt() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               {/* Render the icon dynamically */}
-              <Icon size={24} className="text-primary" />
+              {/* <Icon size={24} className="text-primary" /> */}
               <span className="font-semibold capitalize">{transportMode}</span>
             </div>
             <div className="text-right">
