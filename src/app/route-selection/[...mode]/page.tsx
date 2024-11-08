@@ -9,6 +9,7 @@ import L, { LatLngTuple } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-routing-machine'
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
+import { useRouter } from 'next/navigation'
 
 interface RouteSummary {
   totalDistance: number;
@@ -30,6 +31,7 @@ export default function RouteSelection({params}:{params:{mode:string[]}}) {
   const [distance, setDistance] = useState<number | null>(null)
   const [price, setPrice] = useState<number | null>(null)
   const mapRef = useRef<HTMLDivElement>(null)
+  const router=useRouter()
 
   useEffect(() => {
     if (mapRef.current && !map) {
@@ -85,6 +87,7 @@ export default function RouteSelection({params}:{params:{mode:string[]}}) {
     if (distance !== null) {
       const calculatedPrice = Math.round(distance * 15) // 15 rupees per km
       setPrice(calculatedPrice)
+      router.push(`/receipt/${pickup}/${destination}/${distance}/15/${params.mode[0]}`)
     } else {
       alert('Please calculate the route first.')
     }
